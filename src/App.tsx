@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { publicRoutes } from './routes/routes';
 import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
+
 function App() {
   return (
     <Router>

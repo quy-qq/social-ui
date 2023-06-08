@@ -1,0 +1,30 @@
+.card{
+    border:none;
+    overflow: visible;
+
+    
+}
+.box{
+    padding:10px;
+    padding-top: 15px;
+
+    img{
+    width: 40px;
+    border-radius: 2px;
+}
+span{
+    font-size:15px;
+    padding-left:5px;
+}
+}
+.box:hover{ 
+     background: rgb(216, 216, 216);
+     border-radius: 5px;
+}
+
+
+.user-link{
+  text-decoration: none;
+  color:rgb(168, 168, 168);
+  font-weight:500
+}

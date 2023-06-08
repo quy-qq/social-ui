@@ -1,0 +1,69 @@
+.wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(207, 206, 206);
+    background-color: rgba(0, 0, 0, 0.274);
+}
+form {
+    background-color: rgba(215, 230, 136, 0.274);
+}
+.modal-content {
+    display: flex;
+    justify-content: center;
+}
+.user {
+    display: flex;
+    justify-content: flex-start;
+    .user-type {
+        padding-left: 15px;
+        line-height: 15px;
+    }
+}
+
+.des {
+    width: 100%;
+}
+
+.file-upload::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.file-upload::before {
+    width: 100%;
+    color: #383834;
+    height: 300px;
+    content: 'Thêm video  📁 👈';
+    text-align: center;
+    display: inline-block;
+    background-color: rgb(196, 209, 172);
+    border: 1px solid #999;
+    border-style: ridge;
+    border-radius: 3px;
+    padding-top: 120px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.file-upload:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.end-form {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(8, 8, 8);
+}
+
+.user {
+    img {
+        width: 20px;
+        height: 20px;
+    }
+    b {
+        margin-top: 5px;
+    }
+}

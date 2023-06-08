@@ -2,49 +2,63 @@ import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import images from '../../../assets';
 import config from '../../../config';
-import { Menu, Image, } from 'antd';
+import { Menu, Image } from 'antd';
 import { MenuItemGroupProps } from 'antd/es/menu';
 import type { MenuProps, MenuTheme } from 'antd/es/menu';
-import {
-  AppstoreOutlined,
-  CalendarOutlined,
-  LinkOutlined,
-  MailOutlined,
-  SettingOutlined,
-} from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import {useState} from "react"
+import { LoginOutlined } from '@ant-design/icons';
 
 type MenuItem = Required<MenuProps>['items'][number];
 const cx = classNames.bind(styles)
 
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-  type?: 'group',
-): MenuItem {
-  return {
-    key,
-    children,
-    label,
-    type,
-  } as MenuItem;
-}
-const items: MenuItem[] = [
-    getItem('Trang chủ', '1'),
-    getItem('Bạn Bè', '2'),
-    getItem('MarketPlace', '3'),
-    getItem('Watch', '4'),
-    getItem('Nhóm', '5'),
+
+function HeaderPage() {
+    const userInfoRedux = useSelector((state:any) => state.auth.userInfo);
+    const isLoggedIn = !!userInfoRedux;
+    const items: MenuItem[] = [
+  {
+    key: '1',
+    label: <Link to="/">Trang chủ</Link>,
+  },
+  {
+    key: '2',
+    label: <Link to="/friend">Bạn Bè</Link>,
+  },
+  {
+    key: '3',
+    label: <Link to="/marketplace">Chợ</Link>,
+  },
+  {
+    key: '4',
+    label: <Link to="/watch">Video</Link>,
+  },
+  {
+    key: '5',
+    label: <Link to="/group">Nhóm</Link>,
+  },
 ];
 
-const itemss: MenuItem[] = [
-    getItem('Tìm kiếm', '1'),
-    getItem('Shopping Cart', '2'),
-    getItem('Login', '3'),
+const itemss: MenuItem[] =  isLoggedIn ?([
  
-];
-function HeaderPage() {
+     {
+    key: '1',
+    label: <Link to="/messenger">Tin nhắn</Link>,
+  },
+    {
+    key: '2',
+    label: <Link to="/notification">Thông báo</Link>,
+  },
+  {  
+    key: '3',
+    label: <img className={cx("avatar")} src={userInfoRedux.avatar}/>
+  }
+]):([{
+    key: '2',
+    label: <Link to="/login"><LoginOutlined  style={{fontSize:25 }}
+      />  Đăng nhập</Link>,
+  }]);
     return ( 
       <div className={cx('wrapper')}>
         <div
@@ -70,13 +84,14 @@ function HeaderPage() {
           >
           </Menu>
         </div>
-          <div style={{width:'30%',display: 'flex', justifyContent: 'center' }}>
+        <div style={{width:'30%',display: 'flex', justifyContent: 'center' }}>
          <Menu
         style={{width: '100%'}}
         theme="light"
         mode="horizontal"
             defaultSelectedKeys={['1']}
             items={itemss}
+     
           >
             </Menu>
         </div>

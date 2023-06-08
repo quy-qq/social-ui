@@ -1,4 +1,9 @@
-
+a{
+text-decoration: none;
+}
+input:focus-visible{
+    outline:none
+}
 .content{
     background-color: rgb(163, 163, 31);
 }
